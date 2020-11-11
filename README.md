@@ -1,0 +1,39 @@
+# pacta-cli
+
+Command line tools to work with pacta repositories.
+
+### Installation
+
+* Clones this repo wherever you want.
+
+```bash
+git clone https://2DegreesInvesting/pacta-cli.git
+```
+
+* Add your chosen path to your `$PATH` in your ~/.bashrc, ~/.zshrc, or similar.
+
+```bash
+cd pacta-cli
+echo 'export PATH='"$(pwd)"':${PATH}' >> ~/.zshrc
+```
+
+### Examples
+
+```bash
+pacta-find ~/git
+
+pacta-pull-origin-master
+```
+
+### System requirements
+
+pacta-cli is developed is develop for Linux. If you have a different system
+and experience problems, consider using it from a docker container.
+
+```bash
+docker pull ubuntu
+docker run --rm -it ubuntu
+
+# See installation instructions above
+```
+
