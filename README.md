@@ -25,6 +25,8 @@ pacta-find ~/git
 pacta-pull-origin-master
 ```
 
+<img src=http://i.imgur.com/iMh5lHd.png width=700>
+
 ### System requirements
 
 pacta-cli is developed is develop for Linux. If you have a different system
