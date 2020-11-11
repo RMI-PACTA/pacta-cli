@@ -1,0 +1,52 @@
+#! /bin/bash
+
+# Find subdirectories with an empty file named '.pacta' at their root.
+
+# This command works with no argument if the working directory is either
+# a pacta sibling or the parent of pacta siblings. From elsewhere, you
+# can pass the path to either a sibling of the parent.
+
+# Examples
+# cd ~/git/pacta-data && pacta-find
+# cd ~/git && pacta-find
+# cd ~ && pacta-find ~/git/pacta-data
+# cd ~ && pacta-find ~/git
+
+find_at () {
+    find "$1" -maxdepth 2 -mindepth 2 -empty -type f -name '.pacta'
+}
+
+here="$(pwd)"
+
+# If the user provides a path to the parent of pacta siblings
+path="$1"
+if [ -n "$path" ]
+then
+    cd "$path"
+fi
+
+# If working from the parent of pacta siblings
+wd="$(pwd)"
+out="$(find_at $wd)"
+
+if [ -n "$out" ]
+then
+    echo $out | xargs -L 1 dirname
+    cd "$here"
+    exit 0
+fi
+
+# If working from one of pacta siblings
+parent="$(dirname $wd)"
+out="$(find_at $parent)"
+
+if [ -n "$out" ]
+then
+    echo $out | xargs -L 1 dirname
+    cd "$here"
+    exit 0
+fi
+
+cd "$here"
+exit 1
+

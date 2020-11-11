@@ -1,0 +1,12 @@
+#! /bin/bash
+
+# $1: Optional path to pacta siblings or parent.
+
+# Examples
+# pacta-basenames
+# pacta-basenames ~/git
+# pacta-basenames ~/git/pacta-data
+
+pacta-map 'basename $i' "${1:-$(pwd)}"
+
+exit 0

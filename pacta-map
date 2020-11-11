@@ -1,0 +1,25 @@
+#! /bin/bash
+
+# Apply commands in a sigle-quoted string over each pacta repo
+# by evaluating $i (each pacta repo).
+
+# $1: A single-quoted string starting usually including each
+# repo's pronoun $i -- e.g. 'echo $i'.
+#
+# $2: Optional path to a pacta sibling or its parent.
+
+# Examples:
+# pacta-map 'git -C $i status'
+# pacta-map 'cd $i && git log --oneline --decorate | head -1'
+# pacta-map 'basename $i' ~/git/pacta-data
+
+here=$(pwd)
+commands='eval '$1
+
+for i in $(pacta-find ${2:-$(pwd)})
+do
+    $commands
+done
+
+cd $here
+exit 0
