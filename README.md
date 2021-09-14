@@ -17,6 +17,10 @@ cd pacta-cli
 echo 'export PATH='"$(pwd)"':${PATH}' >> ~/.zshrc
 ```
 
+### Setup
+
+To make a directory a member of the pacta family add a file ".pacta" in its root.
+
 ### Examples
 
 ```bash
