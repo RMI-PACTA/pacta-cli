@@ -1,5 +1,7 @@
 # pacta-cli
 
+**DEPRECATED: Superseded by https://github.com/jdhoffa/pacta-cli**
+
 Command line tools to work with pacta repositories.
 
 ### Installation
